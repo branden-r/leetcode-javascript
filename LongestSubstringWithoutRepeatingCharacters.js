@@ -1,7 +1,3 @@
-/**
- * @param {string} s
- * @return {number}
- */
 const lengthOfLongestSubstring = (s) => {
   // we're going to use this map to keep track of the last place we saw a repeating character
   const charToIndex = new Map();
@@ -16,8 +12,7 @@ const lengthOfLongestSubstring = (s) => {
     if (charToIndex.has(s[i])) {
       // update the maximum length if the length of the current substring is bigger
       maxLength = Math.max(maxLength, i - startIndex);
-      // increase the starting index if the previous instance of this repeating character is inside the substring
-      // we're currently scanning
+      // increase the starting index if the previous instance of this repeating character is inside the substring we're currently scanning
       // the +1 is there to move past the repeating character
       startIndex = Math.max(startIndex, charToIndex.get(s[i]) + 1);
     }
