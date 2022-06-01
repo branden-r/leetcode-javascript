@@ -1,8 +1,3 @@
-/**
- * creates and returns a list node with the given values, or default values if no such values are given
- * @param {number} val
- * @param {ListNode} next
- */
 const ListNode = (val, next) => {
   return {
     val: val === undefined ? 0 : val, // value of the current node
@@ -10,11 +5,6 @@ const ListNode = (val, next) => {
   }; // reference to the next node
 };
 
-/**
- * creates a linked list containing one node for each of the given numbers
- * @param {number[]} numbers
- * @returns {ListNode} head
- */
 const initLinkedList = (numbers) => {
   const head = ListNode(); // false head; let the loop make the nodes, then return head.next
   let body = head; // this will track our current node as we iterate
@@ -25,11 +15,6 @@ const initLinkedList = (numbers) => {
   return head.next; // skip the false head; return the rest of the list
 };
 
-/**
- * converts a linked list to a string
- * @param {ListNode} head
- * @returns {string} linkedListStr
- */
 const strLinkedList = (head) => {
   let str = "["; // start with an open bracket
   while (head) {
@@ -40,12 +25,6 @@ const strLinkedList = (head) => {
   return str.slice(0, -1) + "]"; // remove trailing comma, then add a closing bracket
 };
 
-/**
- * adds two non-empty linked list representations of non-negative integers, with their digits stored in reverse order
- * @param {ListNode} list1
- * @param {ListNode} list2
- * @returns {ListNode} sumList
- */
 const addTwoNumbers = (list1, list2) => {
   let head = ListNode(); // false head; we will handle node creation in the loop, and return head.next
   let body = head; // use this to move to the next node inside the loop
