@@ -1,14 +1,27 @@
-/**
- * @param {number} num
- * @return {string}
- */
-const convertToBase7 = num => {
-    const digits = []; // store our digits in an array from least significant to most
-    let magnitude = Math.abs(num); // the magnitude will decrease as we build our base-seven number
-    while (magnitude >= 7) { // digits in base seven are from zero to six, so if the magnitude is seven or higher, we need to keep going
-        digits.unshift(magnitude % 7); // add the digit to the front of the array
-        magnitude = Math.floor(magnitude / 7); // remove the value of the digit we just found
+// trivial solution
+const convertToBase7 = num => num.toString(7);
+
+// non-trivial solution
+// implement the algorithm for converting to a new base
+// call it with a base of seven
+const myConvertToBase7 = num => convertToBase(num, 7);
+
+const convertToBase = (num, base) => {
+    // we will store our digits in an array from most significant to least
+    const digits = []; 
+    // the magnitude will decrease as we convert to the new base
+    let magnitude = Math.abs(num); 
+    // if the magnitude exceeds the current base, we need to keep converting
+    while (magnitude >= base) { 
+        // we generate our converted digits from least significant to most
+        // this means we need to add them to the front of our array so that the least significant digit is at the end
+        digits.unshift(magnitude % base); 
+        // remove the value of the digit we just found
+        magnitude = Math.floor(magnitude / base); 
     }
-    digits.unshift(magnitude); // add the most significant digit
-    return (num < 0 ? "-" : "") + digits.join(""); // join the digits to make our base-seven number; add a negative sign on the front if we need to
+    // the remaining magnitude is our most significant digit
+    digits.unshift(magnitude); 
+    // join the digits to form our converted number
+    // add a negative sign on the front if we need to
+    return (num < 0 ? "-" : "") + digits.join(""); 
 }
