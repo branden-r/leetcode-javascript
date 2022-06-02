@@ -1,19 +1,18 @@
 /**
- * @param {number[]} numbers
+ * @param {number[]} nums
  * @param {number} target
  * @return {number[]}
  */
-const twoSum = function (numbers, target) {
-  let result;
-  let indexMap = new Map(); // use a map to store the index of every number we see
-  for (let index = 0; index < numbers.length; index++) {
-    partner = target - numbers[index]; // partner is the number we need to find for a solution
-    if (indexMap.has(partner)) {
-      // if we've seen partner already, we're done
-      result = [indexMap.get(partner), index];
-      break;
-    }
-    indexMap.set(numbers[index], index); // we did not find a solution; remember the index of the number we looked at
+const twoSum = (nums, target) => {
+  // we will map every number to its index
+  const numToI = new Map();
+  for (const [i, num] of nums.entries()) {
+    // partner is the number we need to find for the solution
+    let partner = target - num;
+    // if we have seen partner before, we have found a solution
+    if (numToI.has(partner)) return [numToI.get(partner), i];
+    // if we have not seen partner before, we need to keep looking
+    // remember the index of the current number in case it occurs as a partner later
+    numToI.set(num, i);
   }
-  return result;
 };
