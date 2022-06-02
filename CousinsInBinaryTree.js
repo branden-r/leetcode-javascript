@@ -20,8 +20,7 @@ const findXY = (
   if (root.val === x) {
     xDepth = rootDepth;
     xParent = rootParent;
-  }
-  else if (root.val === y) {
+  } else if (root.val === y) {
     yDepth = rootDepth;
     yParent = rootParent;
   }
